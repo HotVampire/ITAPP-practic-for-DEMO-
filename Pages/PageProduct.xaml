@@ -1,0 +1,73 @@
+﻿<Page x:Class="ITAPP.Pages.PageProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ITAPP.Pages"
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="PageProduct" Height="645" Width="800">
+
+    <Grid>
+        <ScrollViewer 
+            Margin="0,0,-75,0">
+            <StackPanel Orientation="Vertical">
+                <StackPanel>
+                    <TextBlock 
+                        Background="Violet"
+                        FontSize="20"
+                        FontWeight="Black"
+                        Text="Поиск по услугам:" />
+                </StackPanel>
+                <TextBox x:Name="TxtSearch"
+                           Width="859" Height="45"
+                           />
+                <ListBox x:Name="ListProduct"
+                         Background="Violet"
+                         Width="790"
+                         BorderBrush="Transparent" Height="451" d:ItemsSource="{d:SampleData ItemCount=9}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <ListBoxItem
+                                BorderBrush="Black"
+                                Background="AliceBlue"
+                                Width="755">
+                                <ListBoxItem.Resources>
+                                    <Style TargetType="{x:Type ListBoxItem}"
+                                           x:Key="LbiRed"/>
+                                </ListBoxItem.Resources>
+                                <ListBoxItem.Style>
+                                    <StaticResource ResourceKey="LbiRed"/>
+                                </ListBoxItem.Style>
+                                <StackPanel Orientation="Vertical" Width="745">
+                                    <TextBlock Text="{Binding Name_services}"
+                                               x:Name="TxtNameProduct"
+                                               Style="{StaticResource prdctTxtb}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Price_services}"
+                                                   Style="{StaticResource prdctTxtb}"/>
+                                        <TextBlock Text=" рублей"
+                                                   Style="{StaticResource prdctTxtb}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Left">
+                                        <Button x:Name="BtnEdit"
+                                                Style="{StaticResource mainBtn}"
+                                                Click="BtnEdit_Click"
+                                                Content="Редактировать"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ListBoxItem>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel>
+                    <TextBlock 
+                        Background="Violet"
+                        FontSize="20"
+                        FontWeight="Black"
+                        Text="# Просмотр действующий услуг и их редактирование" Width="839" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
